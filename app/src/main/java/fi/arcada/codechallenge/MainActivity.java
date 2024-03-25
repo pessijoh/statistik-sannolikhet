@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView valueText;
 
-    double[] values = {1, 3, 5, 6, 7, 8, 8, 8, 7, 14};
+    double[] values = {1, 3, 5, 6, 7, 9, 8, 8, 7, 14};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
