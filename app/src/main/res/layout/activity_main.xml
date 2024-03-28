@@ -23,7 +23,7 @@
         android:id="@+id/inputText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="76dp"
         android:ems="10"
         android:hint="Skriv nånting"
@@ -56,13 +56,13 @@
 
     <TextView
         android:id="@+id/outValue"
-        android:layout_width="155dp"
-        android:layout_height="61dp"
+        android:layout_width="219dp"
+        android:layout_height="106dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="28dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="@+id/outText"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/inputText"
         app:layout_constraintTop_toBottomOf="@+id/outText" />
 
