@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         outputText.setText("Min app funkar!");
 
-
+//wdwd
         }
 
     public static double calcMedian(double[] array) {
