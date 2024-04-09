@@ -5,69 +5,39 @@ import java.util.Collections;
 
 public class Statistics {
 
-    public static double calculateAverage(ArrayList<Double> values) {
+    public static double calcMedian(ArrayList<Double> values) {
+
+        // vi skapar en kopia av values
+        ArrayList<Double> sorted = new ArrayList<>(values);
+        // sedan sorterar vi kopian. Annars sorteras ursprungliga datamängden!
+        Collections.sort(sorted);
+
+        // Detta funkar, ännu bättre skulle vara att kolla skilt för jämna datamängder
+        // med medelvärde av de två mittersta
+        int midIndex = sorted.size()/2;
+
+        // medianen är dett mittersta värdet i vår sorterade datamängd!
+        return sorted.get(midIndex);
+
+    }
+
+    public static double calcMean(ArrayList<Double> values) {
         double sum = 0;
-        for (double num : values) {
-            sum += num;
+        for (int i = 0; i < values.size(); i++) {
+            sum += values.get(i);
         }
+
         return sum / values.size();
     }
 
-    public static double calcMedian(ArrayList<Double> values) {
-        Collections.sort(values);
-        int size = values.size();
-        if (size % 2 == 0) {
-            int midIndex1 = size / 2 - 1;
-            int midIndex2 = size / 2;
-            return (values.get(midIndex1) + values.get(midIndex2)) / 2.0;
-        } else {
-            return values.get(size / 2);
-        }
-    }
-
-    public static double calcMode(ArrayList<Double> values) {
-        // Implement logic for mode calculation
-        // Return mode value or handle if there's no mode
-        return 0; // Placeholder, replace with actual calculation
-    }
-
     public static double calcStdev(ArrayList<Double> values) {
-        double sum = 0;
-        double average = calculateAverage(values);
-
-        for (double num : values) {
-            sum += Math.pow(num - average, 2);
+        double mean = calcMean(values);
+        double sumDeviation = 0;
+        for (int i = 0; i < values.size(); i++) {
+            sumDeviation += Math.pow(values.get(i)-mean, 2);
         }
 
-        double variance = sum / values.size();
-        return Math.sqrt(variance);
-    }
+        return Math.sqrt(sumDeviation / values.size());
 
-    public static double calcLQ(ArrayList<Double> values) {
-        Collections.sort(values);
-        int n = values.size();
-        int lowerIndex = n / 4;
-        if (n % 4 == 0) {
-            return (values.get(lowerIndex - 1) + values.get(lowerIndex)) / 2.0;
-        } else {
-            return values.get(lowerIndex);
-        }
-    }
-
-    public static double calcUQ(ArrayList<Double> values) {
-        Collections.sort(values);
-        int n = values.size();
-        int upperIndex = (int) Math.ceil(3 * n / 4.0);
-        if (n % 4 == 0) {
-            return (values.get(upperIndex - 1) + values.get(upperIndex)) / 2.0;
-        } else {
-            return values.get(upperIndex);
-        }
-    }
-
-    public static double calcIQR(ArrayList<Double> values) {
-        double lq = calcLQ(values);
-        double uq = calcUQ(values);
-        return uq - lq;
     }
 }
